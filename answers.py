@@ -1,59 +1,50 @@
-# question 1:
-
-# create a class representing book.
-# add attributes and methods to the class.
-# use contructors to initialize each object with unique values
-# add inheritance layer to explore polymorphism or encapsulation.
+# question 1
 
 class Book:
-    def __init__(self, title, author, publication_year, genre):
+    def __init__(self, title,author,publication_year):
         self.title = title
         self.author = author
         self.publication_year = publication_year
-        self.genre = genre
-        self.current_page = 0
 
-    def read(self, pages):
-        if pages < 0:
-            print("Cannot read negative pages.")
-            return
-        self.current_page += pages
-        print(f"Reading '{self.title}': You have read {pages} pages. Current page: {self.current_page}")
+    def display_pages(self):
+        print ("Over 200pages.")
 
-        if self.current_page > 100:
-            print(f"You have finished reading '{self.title}' by {self.author}!")
+class novel(Book):
+    def display_pages(self):
+        print("The novel has 500 pages.")
+class atlas(Book):
+    pass
+class autobiography(Book):
+    def display_pages(self):
+        print("The book has 600 pages.")
+class comic_book(Book):
+    def display_pages(self):
+        print("The comic book has 100pages.")
 
-# creating objects with unique attribues
-book1 = Book("To Kill a Mockingbird", "Harper Lee", 1960, "Fiction")
-book2 = Book("1984", "George Orwell", 1949, "Dystopian")
+Novel = novel("War and Peace", "Tolstoy", 1869)
+Atlas = atlas("The North Carolina Atlas", "Douglas Orr", 2000)
+Autobiography = autobiography("I Am Malala", "Malala Yousafzai", 2013)
+Comic_book= comic_book("Blueberry", "Jean Michel", 2015)
 
-print(f"book1:{book1.title}, {book1.author}, {book1.publication_year}, {book1.genre}")
-print(f"book2:{book2.title}, {book2.author}, {book2.publication_year}, {book2.genre}")
- 
-# using methods to read pages
-book1.read(50)
-book2.read(100)
-book1.read(-10)  
-book2.read(20)
+for x in (Novel, Atlas, Autobiography, Comic_book):
+    print(f"{x.title} written by {x.author} in the year {x.publication_year}.")
+    x.display_pages()
 
-#question 2:
-#Create a program that includes animals or vehicles with the same action (like move()). However, make each class define move() differently (for example, Car.move() prints "Driving", while Plane.move() prints "Flying").
+#question 2   
 
-class Car:
-    def move(self):
-        return("Driving")
-class Horse:
-    def move(self):
-        return("Galloping")
-class Plane:
-    def move(self):
-        return("Flying")
-class Boat:
-    def move(self):
-        return("Sailing")
-class Bicycle:
-    def move(self):
-        return("Pedaling")
-#polymorphism in action
-for vehicle in (Car(), Horse(), Plane(), Boat(), Bicycle()):
-    print(vehicle.move())
+class Dog:
+
+    def make_sound(self):
+        print("Woof! Woof!")
+
+class Cat:
+
+    def make_sound(self):
+        print("Meow! Meow!")
+class Lion:
+
+    def make_sound(self):
+        print("Roar! Roar!")
+
+for x in (Dog(), Cat(), Lion()):
+    x.make_sound()
